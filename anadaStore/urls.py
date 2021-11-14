@@ -22,7 +22,7 @@ import storeAnada.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', storeAnada.views.ProductListView.as_view(), name='products-list')
+    path('', storeAnada.views.ProductListView.as_view(), name='home')
 ]
 
 if settings.DEBUG:
