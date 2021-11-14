@@ -18,8 +18,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+import storeAnada.views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', storeAnada.views.ProductListView.as_view(), name='products-list')
 ]
 
 if settings.DEBUG:
