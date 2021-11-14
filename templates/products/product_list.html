@@ -18,4 +18,11 @@
       </div>
     </div>
   </div>
+    <ul>
+    {% for product in object_list %}
+        <li>
+            {{ product.title }}
+        </li>
+    {% endfor %}
+    </ul>
 {% endblock %}
