@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 import storeAnada.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', storeAnada.views.ProductListView.as_view(), name='home'),
-    path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create')
+    path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
+    path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success')
 ]
 
 if settings.DEBUG:
