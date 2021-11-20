@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 
 import storeAnada.views
 
@@ -25,7 +25,7 @@ urlpatterns = [
     # ADMIN
     path('admin/', admin.site.urls),
     # HOME
-    path('', TemplateView.as_view(template_name='store/home.html'), name='home'),
+    path('', storeAnada.views.HomeView.as_view(), name='home'),
     # PRODUCTS
     path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
     path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success'),
