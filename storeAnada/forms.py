@@ -1,5 +1,6 @@
 from products.models import Product, Category
 from django.forms import ModelForm
+from django.utils.text import slugify
 
 
 class ProductForm(ModelForm):

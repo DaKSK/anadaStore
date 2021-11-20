@@ -22,11 +22,15 @@ from django.views.generic import TemplateView
 import storeAnada.views
 
 urlpatterns = [
+    # ADMIN
     path('admin/', admin.site.urls),
+    # HOME
     path('', TemplateView.as_view(template_name='store/home.html'), name='home'),
+    # PRODUCTS
     path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
     path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success'),
-    path('products', storeAnada.views.ProductListView.as_view(), name='product-list')
+    path('products/', storeAnada.views.ProductListView.as_view(), name='product-list'),
+    path('products/update/<pk>', storeAnada.views.ProductUpdateView.as_view(), name='products-update')
 ]
 
 if settings.DEBUG:

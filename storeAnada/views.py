@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from products.models import Product, Category
 from products.forms import ProductForm
 
@@ -17,3 +17,9 @@ class ProductCreateView(CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('success')
 
+
+class ProductUpdateView(UpdateView):
+    template_name = "products/product_create.html"
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('success')
