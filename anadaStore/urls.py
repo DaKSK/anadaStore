@@ -23,9 +23,10 @@ import storeAnada.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', storeAnada.views.ProductListView.as_view(), name='home'),
+    path('', TemplateView.as_view(template_name='store/home.html'), name='home'),
     path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
-    path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success')
+    path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success'),
+    path('products', storeAnada.views.ProductListView.as_view(), name='product-list')
 ]
 
 if settings.DEBUG:

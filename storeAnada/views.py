@@ -8,7 +8,7 @@ from products.forms import ProductForm
 
 
 class ProductListView(ListView):
-    template_name = "store/home.html"
+    template_name = "products/product_list.html"
     model = Product
 
 
