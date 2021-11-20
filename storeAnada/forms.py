@@ -1,13 +1,14 @@
 from products.models import Product, Category
+from django.forms import ModelForm
 
 
-class ProductForm:
+class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
 
 
-class CategoryForm:
+class CategoryForm(ModelForm):
     class Meta:
         model = Category
         fields = '__all__'

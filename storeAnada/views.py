@@ -8,7 +8,7 @@ from products.forms import ProductForm
 
 
 class ProductListView(ListView):
-    template_name = "products/product_list.html"
+    template_name = "store/home.html"
     model = Product
 
 
@@ -16,3 +16,4 @@ class ProductCreateView(CreateView):
     template_name = "products/product_create.html"
     form_class = ProductForm
     success_url = reverse_lazy('success')
+
