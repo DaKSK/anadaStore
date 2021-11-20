@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Products List{% endblock %}
+{% block title %}
+    Products List
+{% endblock %}
 {% block content %}
 <div class="container">
   <div class="row">
       {% for product in object_list %}
         <div class="col-sm">
-          {{ product.title }}
+            <a href="{% url 'product-detail' pk=product.pk %}">{{ product.title }}</a>
         </div>
       {% endfor %}
   </div>

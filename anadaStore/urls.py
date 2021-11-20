@@ -30,6 +30,7 @@ urlpatterns = [
     path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
     path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success'),
     path('products/', storeAnada.views.ProductListView.as_view(), name='product-list'),
+    path('products/<pk>', storeAnada.views.ProductDetailView.as_view(), name='product-detail'),
     path('products/update/<pk>', storeAnada.views.ProductUpdateView.as_view(), name='products-update')
 ]
 
