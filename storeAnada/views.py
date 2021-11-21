@@ -40,3 +40,6 @@ class HomeView(TemplateView):
         return context
 
 
+class PurchaseView():
+    pass
+
