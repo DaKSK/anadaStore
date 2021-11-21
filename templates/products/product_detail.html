@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-lg-2 text-center text-lg-left order-lg-1">
                     <div class="owl-thumbs" data-slider-id="1">
-                        <span class="owl-thumb-item"><img src="media/{{ product.image }}" alt=""></span>
+                        <span class="owl-thumb-item"><img src="" alt=""></span>
                     </div>
                   </div>
                 </div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-8">
-                    <a href="#!" class="btn btn-block btn-lg btn-primary">Buy</a>
+                    <a href="{% url 'purchase' pk=product.pk %}" class="btn btn-block btn-lg btn-primary">Buy</a>
                   </div>
                   <div class="col-12 mt-1">
                     <ul class="nav nav-actions">

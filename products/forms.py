@@ -1,8 +1,8 @@
 from django.forms import (
     ModelForm, Form, CharField, Textarea, DecimalField, ImageField, SlugField,
-    BooleanField, DateTimeField
+    BooleanField, DateTimeField, IntegerField, HiddenInput
 )
-from products.models import Product, Category
+from products.models import Product, Category, Purchase
 
 
 class ProductForm(ModelForm):
@@ -17,4 +17,19 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+
+
+class PurchaseForm(ModelForm):
+    class Meta:
+        model = Purchase
+        fields = "__all__"
+        widgets = {
+            'product': HiddenInput(),
+            'user': HiddenInput()
+        }
+
+    # def __init__(self, *args, **kwargs):
+    #     super(PurchaseForm, self).__init__(*args, **kwargs)
+    #     self.initial['product'] = kwargs['product']
+    #     self.initial['user'] = kwargs['user']
 

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Purchase
+{% endblock %}
+{% block content %}
+    {{ product.title }}
+        <form method="POST">
+            {% csrf_token %}
+                <table>
+                    {{ form }}
+                </table>
+                <input type="submit" value="Buy now">
+            </form>
+
+{% endblock %}

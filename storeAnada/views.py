@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView
-from products.models import Product, Category
-from products.forms import ProductForm
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView
+from products.models import Product, Category, Purchase
+from products.forms import ProductForm, PurchaseForm
 
 
 class ProductListView(ListView):
@@ -40,6 +40,32 @@ class HomeView(TemplateView):
         return context
 
 
-class PurchaseView():
-    pass
+class PurchaseView(FormView):
+    template_name = "store/purchase.html"
+    form_class = PurchaseForm
+    success_url = reverse_lazy('success')
+
+    def form_valid(self, form):
+        print("purchase done")
+        form.save()
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product'] = Product.objects.filter(id=self.kwargs['pk'])[0]
+        return context
+
+    def get_initial(self):
+        initial = super(PurchaseView, self).get_initial()
+        product = Product.objects.get(id=self.kwargs['pk'])
+        initial.update({'product': product.pk, 'user': self.request.user.pk})
+        return initial
+
+    # def get_form_kwargs(self):
+    #     kwargs = super(PurchaseView, self).get_form_kwargs()
+    #     product = Product.objects.filter(id=self.kwargs['pk'])[0]
+    #     kwargs['product'] = product.pk
+    #     kwargs['user'] = self.request.user.pk
+    #
+    #     return kwargs
 
