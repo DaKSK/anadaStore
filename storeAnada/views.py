@@ -12,6 +12,16 @@ class ProductListView(ListView):
     model = Product
 
 
+class CategoryListView(ListView):
+    template_name = "products/categories.html"
+    model = Category
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["products"] = Product.objects.all()
+        return context
+
+
 class ProductCreateView(CreateView):
     template_name = "products/product_create.html"
     form_class = ProductForm
