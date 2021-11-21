@@ -4,14 +4,19 @@
     Categories - {{ category.name }}
 {% endblock %}
 {% block content %}
+
     <p>Categories available</p>
 {% for category in category_list %}
-    <p>{{ category.name }}</p>
+    <a href="{% url 'categories' %}?category={{ category.pk }}"><p>{{ category.name }}</p></a>
 {% endfor %}
+
+
     <p>Products in the {{ category.name }}</p>
 {% for p in products %}
-    {% if p.category == category.name %}
+
     <p>{{ p.title }}</p>
-    {% endif %}
+
 {% endfor %}
+
+
 {% endblock %}

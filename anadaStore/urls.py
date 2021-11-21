@@ -27,7 +27,7 @@ urlpatterns = [
     # HOME
     path('', storeAnada.views.HomeView.as_view(), name='home'),
     # CATEGORIES
-    path('categories', storeAnada.views.CategoryListView.as_view()),
+    path('categories', storeAnada.views.CategoryListView.as_view(), name='categories'),
     # PRODUCTS
     path('products/create', storeAnada.views.ProductCreateView.as_view(), name='product-create'),
     path('products/success', TemplateView.as_view(template_name='store/success.html'), name='success'),

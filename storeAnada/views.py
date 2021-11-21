@@ -16,9 +16,17 @@ class CategoryListView(ListView):
     template_name = "products/categories.html"
     model = Category
 
+# Implement Search here too
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["products"] = Product.objects.all()
+        category = self.request.GET.get('category', None)
+        # search = self.request.GET.get('search', None)
+        products = Product.objects.all()
+        if category:
+            products = products.filter(category__id=int(category))
+        context['products'] = products
+        # if search:
+        #     pass
         return context
 
 
