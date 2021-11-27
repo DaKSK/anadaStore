@@ -4,15 +4,44 @@
     Products List
 {% endblock %}
 {% block content %}
-<div class="container">
-  <div class="row">
-      {% for product in products %}
-        <div class="col-sm">
-            <a href="{% url 'product-detail' pk=product.pk %}">{{ product.title }}</a>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal">Sustainable Decorations</h1>
+            <p class="lead font-weight-normal">Soul to your things. Oriental aesthetic</p>
+            <a class="btn btn-outline-secondary" href="#">Coming soon</a>
         </div>
-      {% endfor %}
-  </div>
-</div>
+        <div class="product-device box-shadow d-none d-md-block"></div>
+        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
+    <div class="album py-5 bg-dark">
+        <div class="container">
+            <div class="row no-gutters">
+                {% for product in object_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 bg-transparent">
+                            <a href="{% url 'product-detail' pk=product.pk %}">
+                                <img class="card-img-top" src="/media/{{ product.image }}" alt="{{ product.title }}">
+                                <div class="card-body">
+                                    <p class="card-text text-center text-white">
+                                        {{ product.title }}
+                                    </p>
+                                </div>
+                            </a>
+                                <div class="btn-group">
+{#                                    Regular users only see the view button#}
+{#                                    <button href="{% url 'purchase' pk=product.pk %}" type="button" class="btn btn-sm btn-outline-secondary text-white">Buy</button>#}
+{#                                    If users admin, can view and edit, delete. Hidden if not#}
+                                    <a class="btn btn-sm btn-outline-secondary text-white" href="{% url 'product-update' pk=product.pk %}">Edit</a>
+                                    <button type="button" class="btn btn-sm btn-outline-danger text-white">Delete</button>
+                                </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
 {#<div class="row">#}
 {#    {% for product in products %}#}

@@ -42,7 +42,6 @@ class CategoryListView(ListView):
 			context['search'] = search
 
 		context['products'] = products
-		print(products)
 
 		return context
 

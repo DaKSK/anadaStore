@@ -11,12 +11,18 @@
 {% endfor %}
 
 
-    <p>Products in the {{ category.name }}</p>
-{% for p in products %}
-
-    <p>{{ p.title }}</p>
-
-{% endfor %}
+    <p>Products in the category {{ category.name }}</p>
+<div class="container">
+    <div class="row">
+        {% for p in products %}
+        <div class="col-sm">
+            <a href="{% url 'product-detail' pk=p.pk %}"><img src="media/{{ p.image }}" alt="{{ p.title }} " height="auto" width="225">
+            <p>{{ p.title }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 
 {% endblock %}
