@@ -22,8 +22,8 @@
                   <li><a href="{% url 'product-create' %}" class="nav-link px-2 text-white">Create Products</a></li>
                 </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                  <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="get">
+                  <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search" value="{{ search }}">
                 </form>
 
                 <div class="text-end">

@@ -13,32 +13,38 @@ class ProductListView(ListView):
 
 class CategoryListView(ListView):
 	template_name = "products/categories.html"
+	# template_name = "products/product_list.html"
 	model = Category
+
+	# def get_context_data(self, **kwargs):
+	# 	context = super().get_context_data(**kwargs)
+	# 	category = self.request.GET.get('category', None)
+	# 	search = self.request.GET.get('search', None)
+	# 	products = Product.objects.all()
+	# 	if category:
+	# 		products = products.filter(category__id=int(category))
+	# 	context['products'] = products
+	#
+	# 	# SEARCH
+	# 	return context
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		if 'category' in kwargs:
-			context['category'] = kwargs['category']
-		if 'search' in kwargs:
-			context['search'] = kwargs['search']
-		if 'products' in kwargs:
-			context['products'] = kwargs['products']
+		# THIS CATEGORY -> the URL query string parameter
+		category = self.request.GET.get('category', None)
+		search = self.request.GET.get('search', None)
+		products = Product.objects.all()
+		if category:
+			context['category'] = category
+			products = products.filter(category__id=int(category))  # Primary key for category
+		if search:
+			products = products.filter(title__contains=search)  # Contains gives flexibility in the search input
+			context['search'] = search
+
+		context['products'] = products
+		print(products)
 
 		return context
-
-
-# Implement Search here too
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         category = self.request.GET.get('category', None)
-#         search = self.request.GET.get('search', None)
-#         products = Product.objects.all()
-#         if category:
-#             products = products.filter(category__id=int(category))
-#         context['products'] = products
-#         if search:
-#             search_results = products.filter(products__id=)
-#         return context
 
 
 class ProductCreateView(CreateView):
