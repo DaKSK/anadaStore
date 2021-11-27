@@ -36,7 +36,7 @@ class CategoryListView(ListView):
 		products = Product.objects.all()
 		if category:
 			context['category'] = category
-			products = products.filter(category__id=int(category))  # Primary key for category
+			products = products.filter(category__id=int(category))  # Filter by FieldNameinProductModel__FieldInFKModel
 		if search:
 			products = products.filter(title__contains=search)  # Contains gives flexibility in the search input
 			context['search'] = search
