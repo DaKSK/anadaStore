@@ -32,11 +32,14 @@
                 {% for product in  products %}
 
                 <div class="card bg-dark text-white">
+                    <a href="{% url 'product-detail' pk=product.pk %}">
                   <img class="card-img" src="/media/{{ product.image }}" alt="{{ product.title }}">
+                        </a>
                   <div class="card-img-overlay" style="top: 70%">
                     <h5 class="card-title">{{ product.title }}</h5>
                     <p class="card-text">€ {{ product.price}}</p>
 {#                    <p class="card-text">Something p</p>#}
+
                   </div>
                 </div>
                 {% endfor %}

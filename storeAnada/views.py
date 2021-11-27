@@ -10,6 +10,16 @@ class ProductListView(ListView):
 	template_name = "products/product_list.html"
 	model = Product
 
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		search = self.request.GET.get('search', None)
+		products = Product.objects.all()
+		if search:
+			products = products.filter(title__contains=search)  # Contains gives flexibility in the search input
+			context['search'] = search
+		context['products'] = products
+		return context
+
 
 class CategoryListView(ListView):
 	template_name = "products/categories.html"
