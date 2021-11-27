@@ -3,55 +3,56 @@
     Create New Product
 {% endblock %}
 {% block content %}
-{#        <form enctype="multipart/form-data" method="POST">#}
-{#        {% csrf_token %}#}
+    <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
 {#            <table>#}
 {#                {{ form }}#}
 {#            </table>#}
 {#            <input type="submit" value="Submit">#}
-{#        </form>#}
-{{ form.errors }}
-<section class="container-fluid text-center" style="padding-top: 90px;">
-    <div class="form-control border-0">
-        {{ form.title.errors }}
-        <label for="{{ form.title.id_for_label }}" class="form-label">Product name</label>
-        {{ form.title }}
-    </div>
-    <div class="form-control border-0">
-        {{ form.description.errors }}
-        <label for="{{ form.description.id_for_label }}">Description:</label>
-        {{ form.description }}
-    </div>
-    <div class="form-control border-0">
-        {{ form.image.errors }}
-        <label for="{{ form.image.id_for_label }}">Image:</label>
-        {{ form.image }}
-    </div>
-    <div class="form-control border-0">
-        {{ form.price.errors }}
-        <label for="{{ form.price.id_for_label }}">Price:</label>
-        {{ form.price }}
-    </div>
-    <div class="form-control border-0">
-        {{ form.category.errors }}
-        <label for="{{ form.category.id_for_label }}">Category:</label>
-        {{ form.category }}
-    </div>
-    <div class="form-control border-0">
-        {{ form.slug.errors }}
-        <label for="{{ form.slug.id_for_label }}">Slug:</label>
-        {{ form.slug }}
-    </div>
-        <div class="form-control border-0">
-        {{ form.in_stock.errors }}
-        <label for="{{ form.in_stock.id_for_label }}">Slug:</label>
-        {{ form.in_stock }}
-    </div>
-        <div class="form-control border-0">
-        {{ form.is_active.errors }}
-        <label for="{{ form.is_active.id_for_label }}">Slug:</label>
-        {{ is_active.slug }}
-    </div>
-    <input type="submit" value="Submit" class="btn btn-primary">
-</section>
+
+            {{ form.errors }}
+            <section class="container-fluid text-center" style="padding-top: 50px;">
+                <div class="form-control border-0">
+                    {{ form.title.errors }}
+                    <label for="{{ form.title.id_for_label }}" class="form-label">Product name</label>
+                    {{ form.title }}
+                </div>
+                <div class="form-control border-0">
+                    {{ form.description.errors }}
+                    <label for="{{ form.description.id_for_label }}">Description:</label>
+                    {{ form.description }}
+                </div>
+                <div class="form-control border-0">
+                    {{ form.image.errors }}
+                    <label for="{{ form.image.id_for_label }}">Image:</label>
+                    {{ form.image }}
+                </div>
+                <div class="form-control border-0">
+                    {{ form.price.errors }}
+                    <label for="{{ form.price.id_for_label }}">Price:</label>
+                    {{ form.price }}
+                </div>
+                <div class="form-control border-0">
+                    {{ form.category.errors }}
+                    <label for="{{ form.category.id_for_label }}">Category:</label>
+                    {{ form.category }}
+                </div>
+                <div class="form-control border-0">
+                    {{ form.slug.errors }}
+                    <label for="{{ form.slug.id_for_label }}">Slug:</label>
+                    {{ form.slug }}
+                </div>
+                    <div class="form-control border-0">
+                    {{ form.in_stock.errors }}
+                    <label for="{{ form.in_stock.id_for_label }}">Slug:</label>
+                    {{ form.in_stock }}
+                </div>
+                    <div class="form-control border-0">
+                    {{ form.is_active.errors }}
+                    <label for="{{ form.is_active.id_for_label }}">Slug:</label>
+                    {{ is_active.slug }}
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </section>
+        </form>
 {% endblock %}
