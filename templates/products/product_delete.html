@@ -3,12 +3,14 @@
     Delete Product {{ product.name }}
 {% endblock %}
     {% block content %}
-        <form method="POST">
+        <div class="container-fluid text-center" style="margin-top: 40px;">
+        <form class="container-lg" method="POST">
             {% csrf_token %}
             <p>
-                Are you sure you want to delete "{{ product.title }}" from the database?
+                Are you sure you want to delete <b>"{{ product.title }}"</b> from the database?
             </p>
-            <input type="submit" value="Delete" class="btn btn-danger">
-            <a class="btn btn-info btn-outline-info text-white" href="{% url 'product-list' %}">Cancel</a>
+            <input type="submit" value="Delete" class="btn btn-danger" style="padding: 30px;">
+            <a style="padding: 30px" class="btn btn-secondary" href="{% url 'product-list' %}" >Cancel</a>
         </form>
+        </div>
     {% endblock %}

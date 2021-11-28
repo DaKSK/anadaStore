@@ -24,6 +24,7 @@ import storeAnada.views
 urlpatterns = [
     # ADMIN
     path('admin/', admin.site.urls),
+    # USER
     # HOME
     path('', storeAnada.views.HomeView.as_view(), name='home'),
     # CATEGORIES
