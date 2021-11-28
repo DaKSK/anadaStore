@@ -126,3 +126,7 @@ class SingUpView(CreateView):
 	template_name = 'store/signup.html'
 	form_class = SignUpForm
 	success_url = reverse_lazy('success')
+
+
+# class ProfileView():
+# 	pass

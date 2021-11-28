@@ -41,3 +41,13 @@ class Purchase(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+
+# Profile
+# class Profile(models.Model):
+#
+#     # Managed fields
+#     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
+#     phone = models.CharField(max_length=32, null=True, blank=True)
+#     address = models.CharField(max_length=255, null=True, blank=True)
+#     city = models.CharField(max_length=50, null=True, blank=True)
+#     purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
