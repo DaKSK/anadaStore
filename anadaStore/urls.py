@@ -18,6 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView, View
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 
 import storeAnada.views
 
@@ -25,6 +26,8 @@ urlpatterns = [
     # ADMIN
     path('admin/', admin.site.urls),
     # USER
+    # path('accounts/login/', storeAnada.views.LoginView.as_view(), name='login'),
+    path('accounts/sign-up/', storeAnada.views.SingUpView.as_view(), name='sign-up'),
     # HOME
     path('', storeAnada.views.HomeView.as_view(), name='home'),
     # CATEGORIES

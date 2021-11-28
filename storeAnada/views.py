@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
 from products.forms import ProductForm, PurchaseForm
+from storeAnada.forms import SignUpForm
 from products.models import Product, Category
 
 
@@ -105,6 +106,7 @@ class PurchaseView(FormView):
 		initial.update({'product': product.pk, 'user': self.request.user.pk})
 		return initial
 
+
 # def get_form_kwargs(self):
 #     kwargs = super(PurchaseView, self).get_form_kwargs()
 #     product = Product.objects.filter(id=self.kwargs['pk'])[0]
@@ -118,3 +120,9 @@ class ProductDeleteView(DeleteView):
 	template_name = 'products/product_delete.html'
 	model = Product
 	success_url = reverse_lazy('product-list')
+
+
+class SingUpView(CreateView):
+	template_name = 'store/signup.html'
+	form_class = SignUpForm
+	success_url = reverse_lazy('success')
