@@ -5,6 +5,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DetailView, T
 from products.forms import ProductForm, PurchaseForm
 from storeAnada.forms import SignUpForm
 from products.models import Product, Category, Purchase
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProductListView(ListView):
@@ -125,14 +126,13 @@ class ProductDeleteView(DeleteView):
 class SingUpView(CreateView):
 	template_name = 'store/signup.html'
 	form_class = SignUpForm
-	success_url = reverse_lazy('success')
+	success_url = reverse_lazy('orders')
 
 
-class ProfileView(TemplateView):
-	template_name = 'store/profile.html'
-	model = Purchase
+class OrdersView(TemplateView):
+	template_name = 'store/orders.html'
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context["purchases"] = Purchase.objects.all()
+		context["orders"] = Purchase.objects.all()
 		return context

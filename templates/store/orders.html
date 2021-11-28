@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Profile
+{% endblock %}
+{% block content %}
+    Username: {{ user }} {{ user.profile.city }}
+    <br>
+    Purchases:
+    {% for item in orders %}
+        {% if item.user == user %}
+                Purchase ID: {{ item.pk }} <br/>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
