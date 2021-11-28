@@ -21,13 +21,16 @@
                         <div class="card mb-4 bg-transparent">
                             <a href="{% url 'product-detail' pk=product.pk %}">
                                 <img class="card-img-top" src="/media/{{ product.image }}" alt="{{ product.title }}">
-                                <div class="card-body">
-                                    <p class="card-text text-center text-white">
+                                <div class="card-body card-img-overlay">
+                                    <p class="card-text text-center text-white" style="font-size: 1.5em">
                                         {{ product.title }}
                                     </p>
                                 </div>
                             </a>
-                                <div class="btn-group">
+                            <div class="btn-group">
+                                    <a class="btn btn-warning" href="{% url 'purchase' pk=product.pk %}">Buy Now</a>
+                            </div>
+                            <div class="btn-group">
 {#                                    Regular users only see the view button#}
 {#                                    <button href="{% url 'purchase' pk=product.pk %}" type="button" class="btn btn-sm btn-outline-secondary text-white">Buy</button>#}
 {#                                    If users admin, can view and edit, delete. Hidden if not#}
