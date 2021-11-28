@@ -28,7 +28,7 @@ urlpatterns = [
     # USER
     path('login/', LoginView.as_view(), name='login'),
     path('accounts/sign-up/', storeAnada.views.SingUpView.as_view(), name='sign-up'),
-    # path('accounts/profile/', storeAnada.views.ProfileView.as_view(), name='profile'),
+    path('accounts/profile/', storeAnada.views.ProfileView.as_view(), name='profile'),
     # HOME
     path('', storeAnada.views.HomeView.as_view(), name='home'),
     # CATEGORIES

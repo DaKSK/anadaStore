@@ -4,5 +4,9 @@
     Profile
 {% endblock %}
 {% block content %}
-{{ request.user }}
+    Username: {{ user }}
+    <br>
+    {% for item in purchases %}
+    Purchase ID: {{ item.pk }} <br/>
+    {% endfor %}
 {% endblock %}
