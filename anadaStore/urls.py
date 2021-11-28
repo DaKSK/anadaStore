@@ -34,7 +34,7 @@ urlpatterns = [
     path('products/', storeAnada.views.ProductListView.as_view(), name='product-list'),
     path('products/<pk>', storeAnada.views.ProductDetailView.as_view(), name='product-detail'),
     path('products/update/<pk>', storeAnada.views.ProductUpdateView.as_view(), name='product-update'),
-    # delete product
+    path('products/delelete/<pk>', storeAnada.views.ProductDeleteView.as_view(), name='product-delete'),
     # PURCHASE
     path('purchase/<pk>', storeAnada.views.PurchaseView.as_view(), name='purchase')
 ]

@@ -1,6 +1,6 @@
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
 from products.forms import ProductForm, PurchaseForm
 from products.models import Product, Category
@@ -112,3 +112,9 @@ class PurchaseView(FormView):
 #     kwargs['user'] = self.request.user.pk
 #
 #     return kwargs
+
+
+class ProductDeleteView(DeleteView):
+	template_name = 'products/product_delete.html'
+	model = Product
+	success_url = reverse_lazy('product-list')

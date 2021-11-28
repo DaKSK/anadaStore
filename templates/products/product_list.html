@@ -32,7 +32,7 @@
 {#                                    <button href="{% url 'purchase' pk=product.pk %}" type="button" class="btn btn-sm btn-outline-secondary text-white">Buy</button>#}
 {#                                    If users admin, can view and edit, delete. Hidden if not#}
                                     <a class="btn btn-sm btn-outline-secondary text-white" href="{% url 'product-update' pk=product.pk %}">Edit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-danger text-white">Delete</button>
+                                    <a class="btn btn-sm btn-outline-danger text-white" href="{% url 'product-delete' pk=product.pk %}">Delete</a>
                                 </div>
                         </div>
                     </div>

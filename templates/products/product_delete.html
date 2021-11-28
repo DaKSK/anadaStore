@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    Delete Product {{ product.name }}
+{% endblock %}
+    {% block content %}
+        <form method="POST">
+            {% csrf_token %}
+            <p>
+                Are you sure you want to delete "{{ product.title }}" from the database?
+            </p>
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <a class="btn btn-info btn-outline-info text-white" href="{% url 'product-list' %}">Cancel</a>
+        </form>
+    {% endblock %}
