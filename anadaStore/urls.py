@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # USER
     path('login/', LoginView.as_view(), name='login'),
+    path('logiut', LogoutView.as_view(), name='logout'),
     path('accounts/sign-up/', storeAnada.views.SingUpView.as_view(), name='sign-up'),
     path('accounts/orders/', storeAnada.views.OrdersView.as_view(), name='orders'),
     # HOME
