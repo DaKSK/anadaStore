@@ -1,11 +1,14 @@
 # Create your views here.
+
+from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
 from products.forms import ProductForm, PurchaseForm
 from storeAnada.forms import SignUpForm
-from products.models import Product, Category, Purchase
+from products.models import Product, Category, Purchase, Profile
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 class ProductListView(ListView):
@@ -126,7 +129,22 @@ class ProductDeleteView(DeleteView):
 class SingUpView(CreateView):
 	template_name = 'store/signup.html'
 	form_class = SignUpForm
-	success_url = reverse_lazy('orders')
+
+
+class DetailProfile(DetailView):
+	template_name = 'accounts/profile.html'
+	model = Profile
+	context_object_name = 'profile'
+
+
+class UserPurchasesList(ListView):
+	template_name = 'store/orders.html'
+	model = Purchase
+	context_object_name = 'orders'
+
+	# GET USER PURCHASES by get_queryset()
+	def get_queryset(self):
+		return Purchase.objects.filter(user=self.request.user)
 
 
 class OrdersView(TemplateView):

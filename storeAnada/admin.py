@@ -23,4 +23,6 @@ class PurchaseAdmin(admin.ModelAdmin):
 	list_filter = ['date', 'updated']
 
 
-admin.site.register(Profile)
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+	list_display = ['user', 'city']

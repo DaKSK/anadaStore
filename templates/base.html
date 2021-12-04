@@ -33,7 +33,7 @@
                     </div>
                   {% else %}
                   <div class="text-xl-end text-white">
-                      <a href="{% url 'orders'%}">{{ user }}</a>
+                      <a href="{% url 'profile' user.profile.pk %}">{{ user }}</a>
                   </div>
                     <div class="text-xl-end text-white m-2">
                       <a href="{% url 'logout'%}">Logout</a>

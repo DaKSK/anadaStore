@@ -48,9 +48,14 @@ class Purchase(models.Model):
 
 # Profile
 class Profile(models.Model):
+    class Meta:
+        verbose_name_plural = 'profiles'
 
     # Managed fields
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     phone = models.CharField(max_length=32, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user} profile"

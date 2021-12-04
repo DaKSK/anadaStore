@@ -27,3 +27,9 @@ class SignUpForm(UserCreationForm):
         new_user = super().save(commit)
         new_profile = Profile.objects.create(user=new_user)
         return new_user
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = '__all__'

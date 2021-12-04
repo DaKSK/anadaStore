@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{#{% if user.is_authenticated %}#}
+{#    {% block title %}#}
+{#        {{ user }} profile#}
+{#    {% endblock %}#}
+{#    {% else %}#}
+{#        {% block title %}#}
+{#            User not authenticated#}
+{#        {% endblock %}#}
+{#{% endif %}#}
+{% block title %}
+        profile
+    {% endblock %}
+{% block content %}
+    <h1> {{ user }} </h1>
+    <h3> Your data</h3>
+    <br>
+    #: {{ profile.pk }}<br>
+    username: {{ profile.user }}<br>
+    Address: {{ profile.address }}<br>
+    City: {{ profile.city }}<br>
+    Phone: {{ profile.phone }}<br>
+
+{% endblock %}
