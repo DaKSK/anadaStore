@@ -1,6 +1,6 @@
 # Create your views here.
 
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
@@ -162,3 +162,5 @@ class OrdersView(TemplateView):
 		context = super().get_context_data(**kwargs)
 		context["orders"] = Purchase.objects.all()
 		return context
+
+
