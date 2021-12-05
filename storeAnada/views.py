@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
 from products.forms import ProductForm, PurchaseForm
-from storeAnada.forms import SignUpForm,ProfileForm
+from storeAnada.forms import SignUpForm, ProfileForm
 from products.models import Product, Category, Purchase, Profile
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -89,7 +89,7 @@ class HomeView(TemplateView):
 		return context
 
 
-class PurchaseView(FormView):
+class PurchaseView(LoginRequiredMixin, FormView):
 	template_name = "store/purchase.html"
 	form_class = PurchaseForm
 	success_url = reverse_lazy('success')

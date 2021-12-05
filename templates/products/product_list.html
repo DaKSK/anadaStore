@@ -27,16 +27,20 @@
                                     </p>
                                 </div>
                             </a>
-                            <div class="btn-group">
-                                    <a class="btn btn-warning" href="{% url 'purchase' pk=product.pk %}">Buy Now</a>
-                            </div>
-                            <div class="btn-group">
-{#                                    Regular users only see the view button#}
-{#                                    <button href="{% url 'purchase' pk=product.pk %}" type="button" class="btn btn-sm btn-outline-secondary text-white">Buy</button>#}
-{#                                    If users admin, can view and edit, delete. Hidden if not#}
-                                    <a class="btn btn-sm btn-outline-secondary text-white" href="{% url 'product-update' pk=product.pk %}">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger text-white" href="{% url 'product-delete' pk=product.pk %}">Delete</a>
+                            {% if not user.is_staff %}
+                                <div class="btn-group">
+                                        <a class="btn btn-warning" href="{% url 'purchase' pk=product.pk %}">Buy Now</a>
                                 </div>
+                            {% endif %}
+                            {% if user.is_staff %}
+                                <div class="btn-group">
+    {#                                    Regular users only see the view button#}
+    {#                                    <button href="{% url 'purchase' pk=product.pk %}" type="button" class="btn btn-sm btn-outline-secondary text-white">Buy</button>#}
+    {#                                    If users admin, can view and edit, delete. Hidden if not#}
+                                        <a class="btn btn-sm btn-outline-secondary text-white" href="{% url 'product-update' pk=product.pk %}">Edit</a>
+                                        <a class="btn btn-sm btn-outline-danger text-white" href="{% url 'product-delete' pk=product.pk %}">Delete</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
