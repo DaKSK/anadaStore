@@ -23,4 +23,4 @@ Style guide: https://themes.getbootstrap.com/preview/?theme_id=28750
 * Payment details for user
 * Payment options for store
 
-PULL REQUESTS welcome, I have never accepted any before
+PULL REQUESTS welcome, I have never accepted any before :)
