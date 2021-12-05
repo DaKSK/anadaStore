@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, TemplateView, FormView, DeleteView
 
 from products.forms import ProductForm, PurchaseForm
-from storeAnada.forms import SignUpForm
+from storeAnada.forms import SignUpForm,ProfileForm
 from products.models import Product, Category, Purchase, Profile
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -131,10 +131,18 @@ class SingUpView(CreateView):
 	form_class = SignUpForm
 
 
-class DetailProfile(DetailView):
+class UpdateProfile(UpdateView):
 	template_name = 'accounts/profile.html'
 	model = Profile
 	context_object_name = 'profile'
+	form_class = ProfileForm
+	success_url = reverse_lazy('success')
+
+	def get_initial(self):
+		initial = super(UpdateProfile, self).get_initial()
+		profile = Profile.objects.get(id=self.kwargs['pk'])
+		initial.update({'profile': profile.pk, 'username': self.request.user.pk})
+		return initial
 
 
 class UserPurchasesList(ListView):
